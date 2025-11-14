@@ -1,8 +1,6 @@
-# Tuberculosis Skin Test (TST) Induration Segmentation & Classification
-A computer vision project for **automated segmentation, measurement, and classification** of Mantoux Tuberculin Skin Test (TST) induration sites.  
-This project aims to reduce inter-reader variability by providing consistent and objective measurement tools using modern segmentation models.
-
-Our project seeks to build computer vision application for automatic segmentation and measurement of the induration, with a secondary goal of identifying positive/negative LTBI outcomes.
+# Tuberculosis Skin Test (TST) Segmentation & Classification
+A computer vision project for automated segmentation, measurement, and classification of Mantoux Tuberculin Skin Test (TST) induration sites.  
+Our project aims to reduce inter-reader variability by providing consistent and objective measurement tools using modern segmentation model, inlcuidng automatic segmentation and measurement of the induration and a stretch goal of identifying positive/negative LTBI outcomes.
 
 ---
 
