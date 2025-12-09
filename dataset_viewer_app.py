@@ -1,8 +1,8 @@
 """
 USAGE:
 python dataset_viewer_app.py \
-  --images_dir data/train \
-  --coco_json data/train/_annotations.coco.json
+  --images_dir data \
+  --coco_json data/_annotations.coco.json
 """
 
 import argparse
@@ -134,6 +134,8 @@ class TBViewerApp:
         self.images_dir = Path(images_dir)
         self.coco = coco
 
+        self.root.geometry("1200x900")
+
         # Build indices
         self.images = {img["id"]: img for img in coco["images"]}
         self.anns_by_img = {img_id: [] for img_id in self.images.keys()}
@@ -225,6 +227,10 @@ class TBViewerApp:
         # Coordinate label
         self.coord_label = tk.Label(control_frame, text="x=?, y=?")
         self.coord_label.pack(side=tk.RIGHT, padx=10)
+
+        # Keyboard navigation: arrow keys move between images
+        self.root.bind("<Left>", self._show_prev_image)
+        self.root.bind("<Right>", self._show_next_image)
 
         # Image display area
         self.image_label = tk.Label(self.root, bg="black")
@@ -354,6 +360,31 @@ class TBViewerApp:
         else:
             self.coord_label.config(text="x=?, y=?")
 
+    def _show_prev_image(self, event=None):
+        """Select the previous image in the dropdown (if any)."""
+        try:
+            current_idx = self.combo.current()
+        except tk.TclError:
+            return
+
+        if current_idx <= 0:
+            return
+
+        self.combo.current(current_idx - 1)
+        self.on_image_change()
+
+    def _show_next_image(self, event=None):
+        """Select the next image in the dropdown (if any)."""
+        try:
+            current_idx = self.combo.current()
+        except tk.TclError:
+            return
+
+        if current_idx >= len(self.display_names) - 1:
+            return
+
+        self.combo.current(current_idx + 1)
+        self.on_image_change()
 
 # ----------------------------------------------------------
 # Main entry
