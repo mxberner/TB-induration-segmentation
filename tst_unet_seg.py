@@ -317,7 +317,7 @@ def main():
     IMAGE_ROOT = "data372"                        # folder with images
 
     batch_size = 4
-    num_epochs = 20
+    num_epochs = 10
     lr = 1e-4
     val_split = 0.2
     resize = (256, 256)
