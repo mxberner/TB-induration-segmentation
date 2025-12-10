@@ -1,8 +1,8 @@
 """
 USAGE:
 python dataset_viewer_app.py \
-  --images_dir data2 \
-  --coco_json data2/_annotations.coco.json
+  --images_dir data \
+  --coco_json data/_annotations.coco.json
 """
 
 import argparse
