@@ -369,6 +369,13 @@ def main():
             f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f}"
         )
 
+    # ======================================================
+    # Save trained model weights
+    # ======================================================
+    save_path = "unet_tst_segmentation.pth"
+    torch.save(model.state_dict(), save_path)
+    print(f"Model saved to {save_path}")
+
     # Example: run one batch through and check shapes
     model.eval()
     imgs, masks = next(iter(val_loader))
@@ -381,6 +388,8 @@ def main():
     print("Input images shape:", imgs.shape)   # (B, 3, H, W)
     print("GT masks shape:    ", masks.shape)  # (B, 2, H, W)
     print("Pred masks shape:  ", preds.shape)  # (B, 2, H, W)
+
+
 
 
 if __name__ == "__main__":
